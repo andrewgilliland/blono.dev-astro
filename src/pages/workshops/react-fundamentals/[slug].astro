@@ -1,0 +1,103 @@
+---
+import Layout from "@/components/layout/Layout.astro";
+import Circle from "@/components/icons/Circle.astro";
+import Container from "@/components/layout/Container.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const lessons = await getCollection("workshops");
+  return lessons.map((lesson) => ({
+    params: { slug: lesson.data.slug || lesson.slug },
+    props: { lesson },
+  }));
+}
+
+const { lesson } = Astro.props;
+const { Content } = await lesson.render();
+
+const allLessons = await getCollection("workshops");
+const sortedLessons = allLessons.sort((a, b) => a.data.number - b.data.number);
+
+const lessonSlug = lesson.data.slug || lesson.slug;
+const currentIndex = sortedLessons.findIndex(
+  (l) => (l.data.slug || l.slug) === lessonSlug
+);
+const prevLesson = currentIndex > 0 ? sortedLessons[currentIndex - 1] : null;
+const nextLesson =
+  currentIndex < sortedLessons.length - 1
+    ? sortedLessons[currentIndex + 1]
+    : null;
+
+const { title, description, number } = lesson.data;
+---
+
+<Layout title={`${title} | React Fundamentals`}>
+  <section id="hero">
+    <Container class="max-w-[30ch] md:max-w-[65ch]">
+      <div
+        class="flex justify-center items-center flex-col md:flex-row mt-20 gap-12 md:gap-20"
+      >
+        <div class="relative">
+          <Circle
+            size={434}
+            class="absolute fill-purp-dark -translate-x-[325px] -translate-y-[325px] opacity-20"
+          />
+          <Circle
+            size={100}
+            class="absolute fill-purp-dark translate-x-32 -translate-y-12 opacity-20"
+          />
+          <Circle
+            size={100}
+            class="absolute fill-purp-dark translate-x-36 translate-y-20 opacity-20"
+          />
+          <div>
+            <h2 class="text-copy">Lesson {number}</h2>
+            <h1 class="relative">{title}</h1>
+          </div>
+        </div>
+        <div class="relative group flex w-full md:w-1/2">
+          <Circle
+            size={250}
+            class="absolute fill-theme-indigo -translate-x-5 md:-translate-y-20 opacity-20"
+          />
+          <p class="relative font-semibold text-2xl text-white md:mt-10">
+            {description}
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+  <section>
+    <Container class="max-w-[30ch] md:max-w-[65ch]">
+      <article class="prose prose-invert mt-12 max-w-none">
+        <Content />
+      </article>
+      <div class="flex justify-between my-12">
+        {
+          prevLesson ? (
+            <a
+              href={`/workshops/react-fundamentals/${prevLesson.data.slug || prevLesson.slug}`}
+              class="text-green-500 font-semibold text-lg hover:underline hover:underline-green-500 border-green-500 border-2 px-2 py-1 rounded-[10px]"
+            >
+              Prev Lesson
+            </a>
+          ) : (
+            <div />
+          )
+        }
+        {
+          nextLesson ? (
+            <a
+              href={`/workshops/react-fundamentals/${nextLesson.data.slug || nextLesson.slug}`}
+              class="text-green-500 font-semibold text-lg hover:underline hover:underline-green-500 border-green-500 border-2 px-2 py-1 rounded-[10px]"
+            >
+              Next Lesson
+            </a>
+          ) : (
+            <div />
+          )
+        }
+      </div>
+    </Container>
+  </section>
+</Layout>

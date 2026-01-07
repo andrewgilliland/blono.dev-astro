@@ -1,0 +1,30 @@
+{
+  "name": "blono.dev-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.0.0",
+    "@astrojs/mdx": "^4.0.0",
+    "@astrojs/react": "^4.0.0",
+    "@astrojs/tailwind": "^6.0.0",
+    "@fontsource/poppins": "^5.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^5.0.0",
+    "astro-seo": "^0.8.0",
+    "calendar-link": "^2.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.12",
+    "typescript": "^5.5.4"
+  }
+}

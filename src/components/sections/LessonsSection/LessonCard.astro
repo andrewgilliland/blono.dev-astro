@@ -1,0 +1,41 @@
+---
+import Badge from "@/components/ui/Badge.astro";
+
+interface Props {
+  lesson: {
+    title: string;
+    description: string;
+    slug: string;
+    number: number;
+  };
+}
+
+const { lesson } = Astro.props;
+const { title, description, slug, number } = lesson;
+---
+
+<div
+  class="relative flex flex-col justify-between px-8 py-10 h-full bg-darker border border-light border-opacity-75 rounded-[10px]"
+>
+  <div class="flex flex-col items-start">
+    <Badge theme="purple">Lesson {number}</Badge>
+    <h3 class="text-heading-tertiary mt-2">{title}</h3>
+    <p class="text-copy mt-2">{description}</p>
+  </div>
+  <div class="flex flex-col gap-4 mt-6">
+    <a
+      href={`/workshops/react-fundamentals/${slug}`}
+      class="text-white font-semibold text-lg group relative"
+    >
+      <div
+        class="absolute bg-transparent border-2 border-purp rounded-[10px] w-full h-full bottom-0"
+      >
+      </div>
+      <div
+        class="bg-purp text-white font-semibold px-4 py-2 rounded-[10px] text-base transform-gpu transition group-hover:-translate-x-1 group-hover:-translate-y-1 group-active:translate-x-0 group-active:translate-y-0"
+      >
+        Get Started
+      </div>
+    </a>
+  </div>
+</div>

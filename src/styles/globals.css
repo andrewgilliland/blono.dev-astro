@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  @apply text-green-500 font-bold text-4xl;
+}
+
+@layer components {
+  .text-heading-secondary {
+    @apply font-brand font-bold text-purp-light text-4xl;
+  }
+
+  .text-heading-tertiary {
+    @apply font-brand font-bold text-purp-light text-2xl;
+  }
+
+  .text-copy {
+    @apply font-brand font-semibold text-base text-white;
+  }
+}
+
+/* prose class has a default max-width of 65ch */
+@media (max-width: 768px) {
+  .prose {
+    max-width: 30ch;
+  }
+}

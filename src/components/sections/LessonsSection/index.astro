@@ -1,0 +1,19 @@
+---
+import Container from "@/components/layout/Container.astro";
+import LessonCard from "./LessonCard.astro";
+import type { LessonType } from "@/types";
+
+interface Props {
+  lessons: LessonType[];
+}
+
+const { lessons } = Astro.props;
+---
+
+<section id="lessons">
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+      {lessons.map((lesson) => <LessonCard lesson={lesson} />)}
+    </div>
+  </Container>
+</section>

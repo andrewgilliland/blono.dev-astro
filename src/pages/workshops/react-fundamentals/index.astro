@@ -1,0 +1,55 @@
+---
+import Layout from "@/components/layout/Layout.astro";
+import Circle from "@/components/icons/Circle.astro";
+import Container from "@/components/layout/Container.astro";
+import LessonsSection from "@/components/sections/LessonsSection/index.astro";
+import { getCollection } from "astro:content";
+
+const lessons = await getCollection("workshops");
+const sortedLessons = lessons
+  .map((lesson) => ({
+    title: lesson.data.title,
+    slug: lesson.data.slug || lesson.slug,
+    description: lesson.data.description,
+    number: lesson.data.number,
+  }))
+  .sort((a, b) => a.number - b.number);
+---
+
+<Layout title="React Fundamentals | Bloomington-Normal Developers">
+  <section id="hero">
+    <Container>
+      <div
+        class="mt-20 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-20"
+      >
+        <div class="relative">
+          <Circle
+            size={434}
+            class="absolute -translate-x-[325px] -translate-y-[325px] fill-purp-dark opacity-20"
+          />
+          <Circle
+            size={100}
+            class="absolute -translate-y-12 translate-x-32 fill-purp-dark opacity-20"
+          />
+          <Circle
+            size={100}
+            class="absolute translate-x-36 translate-y-20 fill-purp-dark opacity-20"
+          />
+          <h1 class="relative">React Fundamentals</h1>
+        </div>
+        <div class="group relative flex w-full md:w-1/2">
+          <Circle
+            size={250}
+            class="absolute -translate-x-5 fill-theme-indigo opacity-20 md:-translate-y-20"
+          />
+          <p class="relative text-2xl font-semibold text-white md:mt-10">
+            Learn the fundamental concepts of React. React is an open source
+            JavaScript UI library. This workshop is perfect for beginners with
+            React and JavaScript.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+  <LessonsSection lessons={sortedLessons} />
+</Layout>

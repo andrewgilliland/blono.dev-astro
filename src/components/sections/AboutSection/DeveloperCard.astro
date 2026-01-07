@@ -1,0 +1,42 @@
+---
+import type { DeveloperType } from "@/types";
+import Badge from "@/components/ui/Badge.astro";
+import type { BadgeTheme } from "@/components/ui/Badge.astro";
+
+interface Props {
+  developer: DeveloperType;
+  color: BadgeTheme;
+}
+
+const { developer, color } = Astro.props;
+const { image, role, skills, name, bio } = developer;
+const { src, alt } = image;
+---
+
+<div
+  class="border border-light border-opacity-75 rounded-[10px] bg-darker shadow-lg"
+>
+  <div class={`flex justify-center bg-${color}-500 py-10 rounded-t-[10px]`}>
+    <div class="relative">
+      <div
+        class="absolute bg-purp-light rounded-full w-full h-full translate-x-1 translate-y-1"
+      >
+      </div>
+      <img
+        class="relative bg-blue-300 object-cover h-48 w-48 rounded-full"
+        src={src}
+        width={192}
+        height={192}
+        alt={alt}
+      />
+    </div>
+  </div>
+  <div class="p-6">
+    <div class="flex flex-wrap gap-2">
+      <Badge theme={color}>{role}</Badge>
+      {skills.map((skill) => <Badge theme="gray">{skill}</Badge>)}
+    </div>
+    <h3 class="text-heading-tertiary mt-4">{name}</h3>
+    <p class="text-copy mt-4">{bio}</p>
+  </div>
+</div>

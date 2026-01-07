@@ -1,0 +1,47 @@
+---
+import Badge from "@/components/ui/Badge.astro";
+---
+
+<div class="max-w-3xl mx-auto">
+  <div
+    class="relative px-8 py-10 h-full bg-purp border border-light border-opacity-75 rounded-[10px]"
+  >
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+      <div class="border bg-dark p-2 rounded-[10px]">
+        <img
+          class="object-cover h-full w-full"
+          src="/react.svg"
+          width={100}
+          height={100}
+          alt="React Logo"
+        />
+      </div>
+      <h3 class="font-brand font-bold text-white text-2xl">
+        React Fundamentals
+      </h3>
+    </div>
+    <div class="mt-6 flex flex-col gap-4 items-start">
+      <Badge theme="gray">10 Lessons</Badge>
+      <p class="text-copy">
+        Learn the fundamental concepts of React. React is an open source
+        JavaScript UI library. This workshop is perfect for beginners with React
+        and JavaScript.
+      </p>
+
+      <a
+        class="text-green-500 font-semibold group relative"
+        href="/workshops/react-fundamentals"
+      >
+        <div
+          class="absolute bg-transparent border-2 border-green-600 rounded-[10px] w-full h-full bottom-0"
+        >
+        </div>
+        <div
+          class="bg-green-500 text-black font-semibold px-4 py-2 rounded-[10px] text-base transform-gpu transition group-hover:-translate-x-1 group-hover:-translate-y-1 group-active:translate-x-0 group-active:translate-y-0"
+        >
+          Get Started
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

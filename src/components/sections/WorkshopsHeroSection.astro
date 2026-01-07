@@ -1,0 +1,38 @@
+---
+import Circle from "@/components/icons/Circle.astro";
+import Container from "@/components/layout/Container.astro";
+---
+
+<section id="hero">
+  <Container>
+    <div
+      class="flex justify-center items-center flex-col md:flex-row mt-20 gap-12 md:gap-20"
+    >
+      <div class="relative">
+        <Circle
+          size={434}
+          class="absolute fill-purp-dark -translate-x-[325px] -translate-y-[325px] opacity-20"
+        />
+        <Circle
+          size={100}
+          class="absolute fill-purp-dark translate-x-32 -translate-y-12 opacity-20"
+        />
+        <Circle
+          size={100}
+          class="absolute fill-purp-dark translate-x-36 translate-y-20 opacity-20"
+        />
+        <h1 class="relative">Workshops</h1>
+      </div>
+      <div class="relative group flex w-full md:w-1/2">
+        <Circle
+          size={250}
+          class="absolute fill-theme-indigo -translate-x-5 md:-translate-y-20 opacity-20"
+        />
+        <p class="relative font-semibold text-2xl text-white md:mt-10">
+          Get some hands on programming knowledge with Bloomington-Normal
+          Developer's workshops.
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>

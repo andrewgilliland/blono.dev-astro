@@ -1,0 +1,17 @@
+---
+import Layout from "@/components/layout/Layout.astro";
+import Container from "@/components/layout/Container.astro";
+import WorkshopsHeroSection from "@/components/sections/WorkshopsHeroSection.astro";
+import WorkshopCard from "@/components/sections/WorkshopCard.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
+---
+
+<Layout title="Workshops | Bloomington-Normal Developers">
+  <WorkshopsHeroSection />
+  <section id="workshops">
+    <Container class="mt-16">
+      <WorkshopCard />
+    </Container>
+  </section>
+  <ContactSection />
+</Layout>

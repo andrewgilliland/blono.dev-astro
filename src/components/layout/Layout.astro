@@ -1,0 +1,53 @@
+---
+import { SEO } from "astro-seo";
+import Header from "@/components/Header/index";
+import Footer from "./Footer.astro";
+import { HEADER_HEIGHT } from "@/lib/constants";
+import { getAllEvents } from "@/lib/events";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@/styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Bloomington-Normal Developers",
+  description = "Bloomington-Normal's group for professional software developers and designers.",
+} = Astro.props;
+
+const events = getAllEvents();
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth font-brand">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: "/og-image.png",
+        },
+      }}
+    />
+  </head>
+  <body class="leading-base bg-gray-900 text-lg text-white antialiased">
+    <div class="flex flex-col bg-dark">
+      <Header events={events} client:load />
+      <main class="min-h-screen px-8" style={`margin-top: ${HEADER_HEIGHT}px`}>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
