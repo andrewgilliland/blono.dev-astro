@@ -1,10 +1,10 @@
 ---
 import Container from "@/components/layout/Container.astro";
 import LessonCard from "./LessonCard.astro";
-import type { LessonType } from "@/types";
+import type { Workshop } from "@/types";
 
 interface Props {
-  lessons: LessonType[];
+  lessons: Workshop[];
 }
 
 const { lessons } = Astro.props;

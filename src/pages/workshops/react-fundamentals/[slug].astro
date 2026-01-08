@@ -7,6 +7,7 @@ import {
   getAllWorkshops,
   getSortedWorkshops,
   getAdjacentWorkshops,
+  getWorkshopSlug,
 } from "@/lib/workshops";
 
 type Props = {
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
   const lessons = await getAllWorkshops();
 
   return lessons.map((lesson) => ({
-    params: { slug: lesson.data.slug || lesson.slug },
+    params: { slug: getWorkshopSlug(lesson) },
     props: { lesson },
   }));
 }
@@ -26,7 +27,7 @@ const { lesson } = Astro.props as Props;
 const { Content } = await lesson.render();
 const sortedLessons = await getSortedWorkshops();
 
-const lessonSlug = lesson.data.slug || lesson.slug;
+const lessonSlug = getWorkshopSlug(lesson);
 const { prev: prevLesson, next: nextLesson } = getAdjacentWorkshops(
   lessonSlug,
   sortedLessons

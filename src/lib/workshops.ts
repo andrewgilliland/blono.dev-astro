@@ -23,3 +23,7 @@ export function getAdjacentWorkshops(
       currentIndex < workshops.length - 1 ? workshops[currentIndex + 1] : null,
   };
 }
+
+export function getWorkshopSlug(workshop: Workshop): string {
+  return workshop.data.slug || workshop.slug;
+}
