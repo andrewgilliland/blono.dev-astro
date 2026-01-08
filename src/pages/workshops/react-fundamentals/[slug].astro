@@ -3,7 +3,11 @@ import Layout from "@/components/layout/Layout.astro";
 import Circle from "@/components/icons/Circle.astro";
 import Container from "@/components/layout/Container.astro";
 import { Workshop } from "@/types";
-import { getAllWorkshops, getSortedWorkshops } from "@/lib/workshops";
+import {
+  getAllWorkshops,
+  getSortedWorkshops,
+  getAdjacentWorkshops,
+} from "@/lib/workshops";
 
 type Props = {
   lesson: Workshop;
@@ -23,14 +27,10 @@ const { Content } = await lesson.render();
 const sortedLessons = await getSortedWorkshops();
 
 const lessonSlug = lesson.data.slug || lesson.slug;
-const currentIndex = sortedLessons.findIndex(
-  (l) => (l.data.slug || l.slug) === lessonSlug
+const { prev: prevLesson, next: nextLesson } = getAdjacentWorkshops(
+  lessonSlug,
+  sortedLessons
 );
-const prevLesson = currentIndex > 0 ? sortedLessons[currentIndex - 1] : null;
-const nextLesson =
-  currentIndex < sortedLessons.length - 1
-    ? sortedLessons[currentIndex + 1]
-    : null;
 
 const { title, description, number } = lesson.data;
 ---
