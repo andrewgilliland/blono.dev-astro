@@ -3,9 +3,8 @@ import Layout from "@/components/layout/Layout.astro";
 import Circle from "@/components/icons/Circle.astro";
 import Container from "@/components/layout/Container.astro";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { Workshop } from "@/types";
 
-type Workshop = CollectionEntry<"workshops">;
 type WorkshopCollection = Workshop[];
 
 type Props = {

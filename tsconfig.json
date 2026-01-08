@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["astro/client"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",

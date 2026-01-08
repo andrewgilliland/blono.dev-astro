@@ -4,8 +4,9 @@ import Circle from "@/components/icons/Circle.astro";
 import Container from "@/components/layout/Container.astro";
 import LessonsSection from "@/components/sections/LessonsSection/index.astro";
 import { getCollection } from "astro:content";
+import { Workshop } from "@/types";
 
-const lessons = await getCollection("workshops");
+const lessons: Workshop[] = await getCollection("workshops");
 const sortedLessons = lessons
   .map((lesson) => ({
     title: lesson.data.title,

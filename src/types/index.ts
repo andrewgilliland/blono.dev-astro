@@ -1,3 +1,5 @@
+import type { CollectionEntry } from "astro:content";
+
 export type ImageType = {
   src: string;
   alt: string;
@@ -42,3 +44,5 @@ export type LessonType = {
   description: string;
   number: number;
 };
+
+export type Workshop = CollectionEntry<"workshops">;
