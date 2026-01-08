@@ -3,19 +3,28 @@ import Layout from "@/components/layout/Layout.astro";
 import Circle from "@/components/icons/Circle.astro";
 import Container from "@/components/layout/Container.astro";
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+type Workshop = CollectionEntry<"workshops">;
+type WorkshopCollection = Workshop[];
+
+type Props = {
+  lesson: Workshop;
+};
 
 export async function getStaticPaths() {
-  const lessons = await getCollection("workshops");
+  const lessons: WorkshopCollection = await getCollection("workshops");
+
   return lessons.map((lesson) => ({
     params: { slug: lesson.data.slug || lesson.slug },
     props: { lesson },
   }));
 }
 
-const { lesson } = Astro.props;
+const { lesson } = Astro.props as Props;
 const { Content } = await lesson.render();
 
-const allLessons = await getCollection("workshops");
+const allLessons: WorkshopCollection = await getCollection("workshops");
 const sortedLessons = allLessons.sort((a, b) => a.data.number - b.data.number);
 
 const lessonSlug = lesson.data.slug || lesson.slug;
@@ -51,7 +60,7 @@ const { title, description, number } = lesson.data;
             class="absolute fill-purp-dark translate-x-36 translate-y-20 opacity-20"
           />
           <div>
-            <h2 class="text-copy">Lesson {number}</h2>
+            <h2 class="text-copy">Lesson affads {number}</h2>
             <h1 class="relative">{title}</h1>
           </div>
         </div>
