@@ -9,6 +9,7 @@ import {
   getAdjacentWorkshops,
   getWorkshopSlug,
 } from "@/lib/workshops";
+import { CIRCLE_SIZES, LESSON_NAV_BUTTON_CLASSES } from "@/lib/constants";
 
 type Props = {
   lesson: Workshop;
@@ -44,15 +45,15 @@ const { title, description, number } = lesson.data;
       >
         <div class="relative">
           <Circle
-            size={434}
+            size={CIRCLE_SIZES.LARGE}
             class="absolute fill-purp-dark -translate-x-[325px] -translate-y-[325px] opacity-20"
           />
           <Circle
-            size={100}
+            size={CIRCLE_SIZES.SMALL}
             class="absolute fill-purp-dark translate-x-32 -translate-y-12 opacity-20"
           />
           <Circle
-            size={100}
+            size={CIRCLE_SIZES.SMALL}
             class="absolute fill-purp-dark translate-x-36 translate-y-20 opacity-20"
           />
           <div>
@@ -62,7 +63,7 @@ const { title, description, number } = lesson.data;
         </div>
         <div class="relative group flex w-full md:w-1/2">
           <Circle
-            size={250}
+            size={CIRCLE_SIZES.MEDIUM}
             class="absolute fill-theme-indigo -translate-x-5 md:-translate-y-20 opacity-20"
           />
           <p class="relative font-semibold text-2xl text-white md:mt-10">
@@ -81,8 +82,8 @@ const { title, description, number } = lesson.data;
         {
           prevLesson ? (
             <a
-              href={`/workshops/react-fundamentals/${prevLesson.data.slug || prevLesson.slug}`}
-              class="text-green-500 font-semibold text-lg hover:underline hover:underline-green-500 border-green-500 border-2 px-2 py-1 rounded-[10px]"
+              href={`/workshops/react-fundamentals/${getWorkshopSlug(prevLesson)}`}
+              class={LESSON_NAV_BUTTON_CLASSES}
             >
               Prev Lesson
             </a>
@@ -93,8 +94,8 @@ const { title, description, number } = lesson.data;
         {
           nextLesson ? (
             <a
-              href={`/workshops/react-fundamentals/${nextLesson.data.slug || nextLesson.slug}`}
-              class="text-green-500 font-semibold text-lg hover:underline hover:underline-green-500 border-green-500 border-2 px-2 py-1 rounded-[10px]"
+              href={`/workshops/react-fundamentals/${getWorkshopSlug(nextLesson)}`}
+              class={LESSON_NAV_BUTTON_CLASSES}
             >
               Next Lesson
             </a>
