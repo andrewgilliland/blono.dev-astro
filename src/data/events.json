@@ -1,5 +1,44 @@
 [
   {
+    "id": "41",
+    "title": "Developer Happy Hour",
+    "startTime": "2026-03-12T17:00:00-06:00",
+    "endTime": "2026-03-12T19:00:00-06:00",
+    "details": "March Developer Happy Hour at Keg Grove Brewing Company, where you can connect with local tech professionals and enthusiasts. Enjoy a relaxed evening of drinks, networking, and sharing your favorite projects from the past year.",
+    "location": "Keg Grove Brewing Company",
+    "image": {
+      "src": "/keg-grove-christmas-1.webp",
+      "alt": "Keg Grove Brewing Company"
+    },
+    "address": "712 E Empire Street, Bloomington, IL"
+  },
+  {
+    "id": "40",
+    "title": "Developer Happy Hour",
+    "startTime": "2026-02-19T17:00:00-06:00",
+    "endTime": "2026-02-19T19:00:00-06:00",
+    "details": "February Developer Happy Hour at Keg Grove Brewing Company, where you can connect with local tech professionals and enthusiasts. Enjoy a relaxed evening of drinks, networking, and sharing your favorite projects from the past year.",
+    "location": "Keg Grove Brewing Company",
+    "image": {
+      "src": "/keg-grove-christmas-1.webp",
+      "alt": "Keg Grove Brewing Company"
+    },
+    "address": "712 E Empire Street, Bloomington, IL"
+  },
+  {
+    "id": "39",
+    "title": "Developer Happy Hour",
+    "startTime": "2026-01-29T17:00:00-06:00",
+    "endTime": "2026-01-29T19:00:00-06:00",
+    "details": "Start the year with our January Developer Happy Hour at Keg Grove Brewing Company, where you can connect with local tech professionals and enthusiasts. Enjoy a relaxed evening of drinks, networking, and sharing your favorite projects from the past year.",
+    "location": "Keg Grove Brewing Company",
+    "image": {
+      "src": "/keg-grove-christmas-1.webp",
+      "alt": "Keg Grove Brewing Company"
+    },
+    "address": "712 E Empire Street, Bloomington, IL"
+  },
+  {
     "id": "38",
     "title": "Developer Happy Hour",
     "startTime": "2025-12-04T17:00:00-06:00",
