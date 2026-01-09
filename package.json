@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "type-check": "astro check"
+    "type-check": "astro check",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.0.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.12",
+    "husky": "^9.1.7",
     "typescript": "^5.5.4"
   }
 }
