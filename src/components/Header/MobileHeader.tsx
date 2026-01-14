@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { ImageType, NavLinkType } from "@/types";
-import MobileNavMenu from "./MobileNavMenu";
-import OpenClose from "../icons/OpenClose";
+import { FC, useState } from 'react';
+import { ImageType, NavLinkType } from '@/types';
+import MobileNavMenu from './MobileNavMenu';
+import OpenClose from '../icons/OpenClose';
 
 type MobileHeaderProps = {
   logo: ImageType;
@@ -23,7 +23,10 @@ const MobileHeader: FC<MobileHeaderProps> = ({ logo, navLinks }) => {
             alt={logo.alt}
           />
         </a>
-        <button onClick={() => setIsOpen(!isOpen)}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        >
           <OpenClose isOpen={isOpen} />
         </button>
       </div>
