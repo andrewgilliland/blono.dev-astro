@@ -1,6 +1,7 @@
 # blono.dev
 
 The official website for Bloomington-Normal Developers, a community for developers in the Bloomington-Normal, Illinois area.
+
 [dev url](https://blono-dev-astro.pages.dev/)
 
 ## Tech Stack
