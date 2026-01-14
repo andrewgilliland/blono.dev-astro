@@ -1,8 +1,9 @@
 ---
-import type { EventType } from "@/types";
-import EventBadge from "@/components/ui/EventBadge.astro";
-import LocationBadge from "@/components/ui/LocationBadge.astro";
-import PhotoIcon from "@/components/icons/PhotoIcon.astro";
+import { Image } from 'astro:assets';
+import type { EventType } from '@/types';
+import EventBadge from '@/components/ui/EventBadge.astro';
+import LocationBadge from '@/components/ui/LocationBadge.astro';
+import PhotoIcon from '@/components/icons/PhotoIcon.astro';
 
 interface Props {
   event: EventType;
@@ -35,7 +36,7 @@ const { id, title, location, startTime, endTime, details, image } = event;
         image ? (
           <div class="relative">
             <div class="absolute h-full w-full translate-x-1 translate-y-1 rounded-[10px] bg-purp-light" />
-            <img
+            <Image
               class="relative min-w-24 rounded-[10px] object-cover"
               src={image.src}
               width={160}

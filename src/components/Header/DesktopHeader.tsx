@@ -1,6 +1,6 @@
-import { FC } from "react";
-import NavLink from "./NavLink";
-import { ImageType, NavLinkType } from "@/types";
+import { FC } from 'react';
+import NavLink from './NavLink';
+import { ImageType, NavLinkType } from '@/types';
 
 type DesktopHeaderProps = {
   logo: ImageType;

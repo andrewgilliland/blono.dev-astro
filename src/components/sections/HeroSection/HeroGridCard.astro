@@ -1,5 +1,6 @@
 ---
-import type { ImageType } from "@/types";
+import { Image } from 'astro:assets';
+import type { ImageType } from '@/types';
 
 export interface Props {
   span: string;
@@ -21,7 +22,7 @@ const { src, alt } = image;
         class="absolute bg-purp-light rounded-[10px] w-full h-full translate-x-1 translate-y-1"
       >
       </div>
-      <img
+      <Image
         class="relative object-cover overflow-hidden rounded-[10px] h-full w-full"
         src={src}
         width={160}

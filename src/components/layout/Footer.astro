@@ -1,28 +1,29 @@
 ---
-import Container from "./Container.astro";
-import DiscordIcon from "@/components/icons/DiscordIcon.astro";
-import LinkedInIcon from "@/components/icons/LinkedInIcon.astro";
-import MeetupIcon from "@/components/icons/MeetupIcon.astro";
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import DiscordIcon from '@/components/icons/DiscordIcon.astro';
+import LinkedInIcon from '@/components/icons/LinkedInIcon.astro';
+import MeetupIcon from '@/components/icons/MeetupIcon.astro';
 
 const mainLogo = {
-  src: "/bn-logo-1.svg",
-  alt: "Bloomington-Normal Developers Logo",
+  src: '/bn-logo-1.svg',
+  alt: 'Bloomington-Normal Developers Logo',
 };
 
 const socialLinks = [
   {
-    href: "https://discord.gg/5XfdtzHrjH",
-    text: "Discord",
+    href: 'https://discord.gg/5XfdtzHrjH',
+    text: 'Discord',
     Icon: DiscordIcon,
   },
   {
-    href: "https://www.linkedin.com/company/bloomington-normal-developers",
-    text: "LinkedIn",
+    href: 'https://www.linkedin.com/company/bloomington-normal-developers',
+    text: 'LinkedIn',
     Icon: LinkedInIcon,
   },
   {
-    href: "https://www.meetup.com/blonodev",
-    text: "Meetup",
+    href: 'https://www.meetup.com/blonodev',
+    text: 'Meetup',
     Icon: MeetupIcon,
   },
 ];
@@ -34,7 +35,7 @@ const currentYear = new Date().getFullYear();
   <Container class="flex w-full flex-col py-20">
     <div class="flex flex-col items-center justify-between gap-12 md:flex-row">
       <a href="/">
-        <img src={mainLogo.src} width={120} height={100} alt={mainLogo.alt} />
+        <Image src={mainLogo.src} width={120} height={100} alt={mainLogo.alt} />
       </a>
       <div class="flex gap-5">
         {
@@ -57,7 +58,7 @@ const currentYear = new Date().getFullYear();
       </p>
 
       <p class="text-center text-sm text-gray-100">
-        Design by{" "}
+        Design by{' '}
         <a
           target="_blank"
           rel="noopener noreferrer"

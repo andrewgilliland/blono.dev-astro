@@ -1,11 +1,12 @@
 ---
-import Layout from "@/components/layout/Layout.astro";
-import Container from "@/components/layout/Container.astro";
-import ContactSection from "@/components/sections/ContactSection.astro";
-import AddToCalendarButton from "@/components/ui/AddToCalendarButton";
-import EventBadge from "@/components/ui/EventBadge.astro";
-import LocationBadge from "@/components/ui/LocationBadge.astro";
-import { getAllEvents, getEventById } from "@/lib/events";
+import { Image } from 'astro:assets';
+import Layout from '@/components/layout/Layout.astro';
+import Container from '@/components/layout/Container.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import AddToCalendarButton from '@/components/ui/AddToCalendarButton';
+import EventBadge from '@/components/ui/EventBadge.astro';
+import LocationBadge from '@/components/ui/LocationBadge.astro';
+import { getAllEvents, getEventById } from '@/lib/events';
 
 export function getStaticPaths() {
   const events = getAllEvents();
@@ -18,7 +19,7 @@ const { id } = Astro.params;
 const event = getEventById(id);
 
 if (!event) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404');
 }
 
 const { title, location, address, details, image, startTime, endTime } = event;
@@ -34,7 +35,7 @@ const isUpcomingEvent = new Date() < dateObj;
       <div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
         {
           image && (
-            <img
+            <Image
               class="relative w-full rounded-[10px] border-2 border-purple-600 object-cover"
               src={image.src}
               alt={image.alt}
