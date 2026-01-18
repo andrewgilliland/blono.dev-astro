@@ -1,5 +1,5 @@
-import { EventType } from "@/types";
-import { FC } from "react";
+import { EventType } from '@/types';
+import { FC } from 'react';
 
 type HeaderBannerProps = {
   events?: EventType[];
@@ -19,13 +19,14 @@ const HeaderBanner: FC<HeaderBannerProps> = ({ events }) => {
     const nextEvent = events[0];
 
     const options: Intl.DateTimeFormatOptions = {
-      month: "long",
-      day: "numeric",
-      weekday: "long",
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+      timeZone: 'America/Chicago',
     };
 
     return nextEvent
-      ? new Date(nextEvent.startTime).toLocaleDateString(undefined, options)
+      ? new Date(nextEvent.startTime).toLocaleDateString('en-US', options)
       : null;
   };
 
@@ -42,7 +43,7 @@ const HeaderBanner: FC<HeaderBannerProps> = ({ events }) => {
             ? `Bloomington-Normal Developer's next event is on ${getNextEventDate(
                 events
               )}`
-            : "No upcoming events"}
+            : 'No upcoming events'}
         </div>
         <div className="h-[2px] w-[0%] rounded-full bg-black transition-all group-hover:w-full" />
       </a>
