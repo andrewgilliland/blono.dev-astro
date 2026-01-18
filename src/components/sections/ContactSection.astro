@@ -1,7 +1,8 @@
 ---
-import ButtonLink from "@/components/ui/ButtonLink.astro";
-import Container from "@/components/layout/Container.astro";
-import { SECTION_TOP_PADDING_OFFSET } from "@/lib/constants";
+import { Image } from 'astro:assets';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+import Container from '@/components/layout/Container.astro';
+import { SECTION_TOP_PADDING_OFFSET } from '@/lib/constants';
 ---
 
 <section id="contact" style={`padding-top: ${SECTION_TOP_PADDING_OFFSET}px`}>
@@ -40,7 +41,7 @@ import { SECTION_TOP_PADDING_OFFSET } from "@/lib/constants";
             class="absolute h-full w-full translate-x-1 translate-y-1 rounded-[10px] bg-purp-light"
           >
           </div>
-          <img
+          <Image
             class="relative max-w-40 rounded-[10px] object-cover md:max-w-96"
             src="/revenge-of-the-nerds-1.avif"
             width={350}
