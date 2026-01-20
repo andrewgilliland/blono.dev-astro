@@ -1,9 +1,7 @@
-import type { CollectionEntry } from "astro:content";
+import type { ImageMetadata } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 
-export type ImageType = {
-  src: string;
-  alt: string;
-};
+export type ImageType = ImageMetadata & { alt: string };
 
 export type NavLinkType = {
   href: string;
@@ -45,4 +43,4 @@ export type LessonType = {
   number: number;
 };
 
-export type Workshop = CollectionEntry<"workshops">;
+export type Workshop = CollectionEntry<'workshops'>;

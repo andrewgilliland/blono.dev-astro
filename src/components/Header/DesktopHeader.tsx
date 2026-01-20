@@ -3,7 +3,7 @@ import NavLink from './NavLink';
 import { ImageType, NavLinkType } from '@/types';
 
 type DesktopHeaderProps = {
-  logo: ImageType;
+  logo: { src: string; alt: string };
   navLinks: NavLinkType[];
 };
 

@@ -4,7 +4,7 @@ import MobileNavMenu from './MobileNavMenu';
 import OpenClose from '../icons/OpenClose';
 
 type MobileHeaderProps = {
-  logo: ImageType;
+  logo: { src: string; alt: string };
   navLinks: NavLinkType[];
 };
 

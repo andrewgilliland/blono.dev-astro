@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const { span, image, heading, tagline } = Astro.props;
-const { src, alt } = image;
+const { alt } = image;
 ---
 
 <div class={`group relative flex flex-col justify-between col-span-1 ${span}`}>
@@ -24,9 +24,7 @@ const { src, alt } = image;
       </div>
       <Image
         class="relative object-cover overflow-hidden rounded-[10px] h-full w-full"
-        src={src}
-        width={160}
-        height={160}
+        src={image}
         alt={alt}
       />
     </div>

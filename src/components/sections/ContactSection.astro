@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import ButtonLink from '@/components/ui/ButtonLink.astro';
 import Container from '@/components/layout/Container.astro';
 import { SECTION_TOP_PADDING_OFFSET } from '@/lib/constants';
+import nerdsImage from '@/assets/images/revenge-of-the-nerds-1.avif';
 ---
 
 <section id="contact" style={`padding-top: ${SECTION_TOP_PADDING_OFFSET}px`}>
@@ -43,9 +44,7 @@ import { SECTION_TOP_PADDING_OFFSET } from '@/lib/constants';
           </div>
           <Image
             class="relative max-w-40 rounded-[10px] object-cover md:max-w-96"
-            src="/revenge-of-the-nerds-1.avif"
-            width={350}
-            height={350}
+            src={nerdsImage}
             alt="Nerds"
           />
         </div>
