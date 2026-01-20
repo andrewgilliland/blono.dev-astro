@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { ImageType, NavLinkType } from '@/types';
+import { NavLinkType } from '@/types';
 import MobileNavMenu from './MobileNavMenu';
 import OpenClose from '../icons/OpenClose';
 
