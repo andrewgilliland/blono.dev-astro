@@ -1,0 +1,192 @@
+---
+import type { EventType } from '@/types';
+import { HEADER_HEIGHT } from '@/lib/constants';
+
+interface Props {
+  events?: EventType[];
+}
+
+const { events } = Astro.props;
+
+const mainLogo = {
+  src: '/bn-logo-1.svg',
+  alt: 'Bloomington-Normal Developers Logo',
+};
+
+const navLinks = [
+  { href: '/events', text: 'Events' },
+  { href: '/workshops', text: 'Workshops' },
+  { href: '/#about', text: 'About' },
+  { href: '/#contact', text: 'Contact' },
+];
+
+// Get next event date
+let nextEventDate: string | null = null;
+if (events && events.length > 0) {
+  const sortedEvents = [...events].sort(
+    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+  );
+  const nextEvent = sortedEvents[0];
+  if (nextEvent) {
+    const options: Intl.DateTimeFormatOptions = {
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+      timeZone: 'America/Chicago',
+    };
+    nextEventDate = new Date(nextEvent.startTime).toLocaleDateString(
+      'en-US',
+      options
+    );
+  }
+}
+---
+
+<header class="fixed z-20 w-full bg-black">
+  <!-- Mobile Header -->
+  <div class="md:hidden">
+    <div
+      class="bg-darkish-blue/50 flex w-full items-center justify-between px-[10%] py-4"
+    >
+      <a class="z-10" href="/">
+        <img
+          class="h-12"
+          src={mainLogo.src}
+          width={80}
+          height={100}
+          alt={mainLogo.alt}
+        />
+      </a>
+      <button
+        id="mobileMenuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <svg
+          id="menuIcon"
+          class="h-6 w-6 text-white transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            id="menuOpenPath"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+          <path
+            id="menuClosePath"
+            class="hidden"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <nav id="mobileMenu">
+      {
+        navLinks.map((link, index) => (
+          <div
+            class="mobile-menu-item fixed left-0 flex h-16 w-full translate-x-full items-center justify-center bg-black text-white transition-transform duration-300 ease-out"
+            style={`top: ${HEADER_HEIGHT + index * 64}px;`}
+            data-index={index}
+          >
+            <div class="absolute z-0 h-full w-full bg-dark-blue opacity-50" />
+            <a class="group z-10" href={link.href}>
+              <div class="font-semibold text-white">{link.text}</div>
+              <div class="h-[2px] w-[0%] rounded-full bg-green-500 transition-all group-hover:w-full" />
+            </a>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+
+  <!-- Desktop Header -->
+  <div class="hidden md:flex bg-darkish-blue/50">
+    <div
+      class="mx-auto flex w-full max-w-5xl items-center justify-between px-0 py-4 md:px-4"
+    >
+      <a class="z-10" href="/">
+        <img
+          class="h-12"
+          src={mainLogo.src}
+          width={62}
+          height={48}
+          alt={mainLogo.alt}
+        />
+      </a>
+
+      <div class="flex gap-12">
+        {
+          navLinks.map((link) => (
+            <a class="group z-10" href={link.href}>
+              <div class="font-semibold text-white">{link.text}</div>
+              <div class="h-[2px] w-[0%] rounded-full bg-green-500 transition-all group-hover:w-full" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Banner -->
+  {
+    nextEventDate && (
+      <div class="flex justify-center bg-green-500 px-[10%] pb-1 pt-2">
+        <a class="group" href="#events">
+          <div class="text-balance text-center text-sm font-semibold text-black">
+            Bloomington-Normal Developer's next event is on {nextEventDate}
+          </div>
+          <div class="h-[2px] w-[0%] rounded-full bg-black transition-all group-hover:w-full" />
+        </a>
+      </div>
+    )
+  }
+
+  <script is:inline>
+    const toggle = document.getElementById('mobileMenuToggle');
+    const menu = document.getElementById('mobileMenu');
+    const openPath = document.getElementById('menuOpenPath');
+    const closePath = document.getElementById('menuClosePath');
+    const menuItems = document.querySelectorAll('.mobile-menu-item');
+
+    let isOpen = false;
+
+    toggle?.addEventListener('click', () => {
+      isOpen = !isOpen;
+
+      // Toggle icon
+      openPath?.classList.toggle('hidden');
+      closePath?.classList.toggle('hidden');
+
+      // Update aria attributes
+      toggle.setAttribute('aria-expanded', isOpen.toString());
+      toggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
+
+      // Animate menu items with staggered delay
+      menuItems.forEach((item, index) => {
+        const delay = isOpen
+          ? index * 100
+          : (menuItems.length - index - 1) * 100;
+
+        setTimeout(() => {
+          if (isOpen) {
+            item.classList.remove('translate-x-full');
+            item.classList.add('translate-x-0');
+          } else {
+            item.classList.remove('translate-x-0');
+            item.classList.add('translate-x-full');
+          }
+        }, delay);
+      });
+    });
+  </script>
+</header>

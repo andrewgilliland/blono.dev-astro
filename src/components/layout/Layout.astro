@@ -1,6 +1,6 @@
 ---
 import { SEO } from 'astro-seo';
-import Header from '@/components/Header/index';
+import Header from '@/components/Header/Header.astro';
 import Footer from './Footer.astro';
 import { HEADER_HEIGHT } from '@/lib/constants';
 import { getAllEvents } from '@/lib/events';
@@ -50,7 +50,7 @@ const futureEvents = allEvents
   </head>
   <body class="leading-base bg-gray-900 text-lg text-white antialiased">
     <div class="flex flex-col bg-dark">
-      <Header events={futureEvents} client:visible />
+      <Header events={futureEvents} />
       <main class="min-h-screen px-8" style={`margin-top: ${HEADER_HEIGHT}px`}>
         <slot />
       </main>
