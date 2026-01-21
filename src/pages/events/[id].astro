@@ -54,7 +54,7 @@ const isUpcomingEvent = new Date() < dateObj;
           {
             isUpcomingEvent && (
               <div class="mt-4">
-                <AddToCalendarButton event={event} client:load />
+                <AddToCalendarButton event={event} client:idle />
               </div>
             )
           }
