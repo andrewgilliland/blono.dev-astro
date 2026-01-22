@@ -1,5 +1,6 @@
 ---
 import { SEO } from 'astro-seo';
+import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/Header/Header.astro';
 import Footer from './Footer.astro';
 import { HEADER_HEIGHT } from '@/lib/constants';
@@ -36,6 +37,7 @@ const futureEvents = allEvents
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <ClientRouter />
     <SEO
       title={title}
       description={description}
@@ -50,7 +52,7 @@ const futureEvents = allEvents
   </head>
   <body class="leading-base bg-gray-900 text-lg text-white antialiased">
     <div class="flex flex-col bg-dark">
-      <Header events={futureEvents} />
+      <Header events={futureEvents} transition:persist />
       <main class="min-h-screen px-8" style={`margin-top: ${HEADER_HEIGHT}px`}>
         <slot />
       </main>
