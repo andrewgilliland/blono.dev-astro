@@ -1,12 +1,7 @@
 ---
-import type { EventType } from '@/types';
 import { HEADER_HEIGHT } from '@/lib/constants';
-
-interface Props {
-  events?: EventType[];
-}
-
-const { events } = Astro.props;
+import { getUpcomingEvents } from '@/lib/events';
+import { formatEventDate } from '@/lib/date-utils';
 
 const mainLogo = {
   src: '/bn-logo-1.svg',
@@ -21,25 +16,10 @@ const navLinks = [
 ];
 
 // Get next event date
-let nextEventDate: string | null = null;
-if (events && events.length > 0) {
-  const sortedEvents = [...events].sort(
-    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
-  );
-  const nextEvent = sortedEvents[0];
-  if (nextEvent) {
-    const options: Intl.DateTimeFormatOptions = {
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
-      timeZone: 'America/Chicago',
-    };
-    nextEventDate = new Date(nextEvent.startTime).toLocaleDateString(
-      'en-US',
-      options
-    );
-  }
-}
+const upcomingEvents = getUpcomingEvents();
+const nextEventDate = upcomingEvents.length > 0 
+  ? formatEventDate(upcomingEvents[0].startTime) 
+  : null;
 ---
 
 <header class="fixed z-20 w-full bg-black">

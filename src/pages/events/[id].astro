@@ -7,6 +7,7 @@ import AddToCalendarButton from '@/components/ui/AddToCalendarButton';
 import EventBadge from '@/components/ui/EventBadge.astro';
 import LocationBadge from '@/components/ui/LocationBadge.astro';
 import { getAllEvents, getEventById } from '@/lib/events';
+import { isUpcomingEvent } from '@/lib/date-utils';
 
 export function getStaticPaths() {
   const events = getAllEvents();
@@ -24,8 +25,7 @@ if (!event) {
 
 const { title, location, address, details, image, startTime, endTime } = event;
 
-const dateObj = new Date(startTime);
-const isUpcomingEvent = new Date() < dateObj;
+const isUpcoming = isUpcomingEvent(startTime);
 ---
 
 <Layout title={`${title} | Bloomington-Normal Developers`}>
@@ -52,7 +52,7 @@ const isUpcomingEvent = new Date() < dateObj;
           </div>
 
           {
-            isUpcomingEvent && (
+            isUpcoming && (
               <div class="mt-4">
                 <AddToCalendarButton event={event} client:idle />
               </div>

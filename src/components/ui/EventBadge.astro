@@ -1,5 +1,6 @@
 ---
 import Badge from "./Badge.astro";
+import { getDateComponents, formatTimeString } from "@/lib/date-utils";
 
 interface Props {
   startTime: string;
@@ -8,19 +9,7 @@ interface Props {
 
 const { startTime, endTime } = Astro.props;
 
-const dateObj = new Date(startTime);
-const month = dateObj.toLocaleString("default", { month: "short" });
-const day = dateObj.getDate();
-const dayOfWeek = dateObj.toLocaleString("default", { weekday: "short" });
-
-const formatTimeString = (dateTime: string) => {
-  const date = new Date(dateTime);
-  return date.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    timeZone: "America/Chicago",
-  });
-};
+const { month, day, dayOfWeek } = getDateComponents(startTime);
 ---
 
 <Badge theme="purple">

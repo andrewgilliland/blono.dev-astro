@@ -4,7 +4,6 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/Header/Header.astro';
 import Footer from './Footer.astro';
 import { HEADER_HEIGHT } from '@/lib/constants';
-import { getAllEvents } from '@/lib/events';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
@@ -20,15 +19,6 @@ const {
   title = 'Bloomington-Normal Developers',
   description = "Bloomington-Normal's group for professional software developers and designers.",
 } = Astro.props;
-
-const allEvents = getAllEvents();
-
-// Filter to only future events and sort by date
-const futureEvents = allEvents
-  .filter((event) => new Date(event.startTime) > new Date())
-  .sort(
-    (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
-  );
 ---
 
 <!doctype html>
@@ -52,7 +42,7 @@ const futureEvents = allEvents
   </head>
   <body class="leading-base bg-gray-900 text-lg text-white antialiased">
     <div class="flex flex-col bg-dark">
-      <Header events={futureEvents} transition:persist />
+      <Header transition:persist />
       <main class="min-h-screen px-8" style={`margin-top: ${HEADER_HEIGHT}px`}>
         <slot />
       </main>
